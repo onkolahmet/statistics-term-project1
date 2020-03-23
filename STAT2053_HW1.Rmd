@@ -1,0 +1,475 @@
+---
+title: "STAT253 – Homework#1"
+author: "Ahmet ÖNKOL - 150117018"
+date: "23.03.2020"
+output:
+  word_document: default
+  html_document: default
+---
+
+
+## Part-1
+The entries include the person's age and systolic and diastolic blood pressures,which implies that the variables are age,systolic blood pressure and diastolic blood pressure.
+
+Age=Quantitative and discrete,because the age takes on numerical values and the age is also an integer.
+
+Systolic blood pressure=Quantitative and continuous,because the Systolic blood pressure could be decimal.
+
+Diastolic blood pressure=Quantitative and continuous,because the diastolic blood pressure takes on numerical values and the diastolic blood pressure could be a decimal.
+
+The data are also multivariate,because we are observing more than two variables for every individual.
+
+## Part-2
+
+In this case,we have extremely large sample.A stem and leaf plot and dotplot are not appropriate for very large data sets and thus only the relative frequency histograms are appropriate.
+
+We can use graphical methods to determine the shape of the distributions,unusual features,differences in the distribution for males and the distributions for females.
+
+## Part-3
+
+```{r table}
+values<-read.csv("HW1_Data.csv")
+male<-subset(values,GENDER == "0")
+female<-subset(values,GENDER == "1")
+systolicformale<-c(male[,c("SYSBP")])
+diastolicformale<-c(male[,c("DIASBP")])
+systolic_female<-c(female[,c("SYSBP")])
+diastolic_female<-c(female[,c("DIASBP")])
+```
+
+##  Values For Males
+
+
+## a)Mean value:
+## Systolic Blood Pressure
+```{r mean, echo=FALSE}
+mean(systolicformale) 
+```
+## Diastolic Blood Pressure
+```{r mean2, echo=FALSE}
+mean(diastolicformale) 
+```
+  
+
+
+## b)Sample Variance:
+## Systolic Blood Pressure
+```{r variance, echo=FALSE}
+var(systolicformale)
+```
+## Diastolic Blood Pressure
+```{r variance2, echo=FALSE}
+var(diastolicformale) 
+```
+
+
+## c)Standard Deviation:
+## Systolic Blood Pressure
+```{r standard dev, echo=FALSE}
+sd(systolicformale)
+```
+## Diastolic Blood Pressure
+```{r standard2, echo=FALSE}
+sd(diastolicformale) 
+```
+
+
+## d)Corresponding Quartiles:
+## Systolic Blood Pressure
+```{r quartiles, echo=FALSE}
+quantile(systolicformale)
+```
+## Diastolic Blood Pressure
+```{r quartiles2, echo=FALSE}
+quantile(diastolicformale) 
+```
+
+
+## e)Max and Min Values:
+## Systolic Blood Pressure
+```{r max&min, echo=FALSE}
+max(systolicformale)
+min(systolicformale)
+```
+## Diastolic Blood Pressure
+```{r max&min2, echo=FALSE}
+max(diastolicformale) 
+min(diastolicformale)
+```
+
+
+## f)Range:
+## Systolic Blood Pressure
+```{r range, echo=FALSE}
+range(systolicformale)
+```
+## Diastolic Blood Pressure
+```{r range2, echo=FALSE}
+range(diastolicformale) 
+```
+
+
+
+## g)
+For Systolic Blood Pressure,dividing the range by the sample standard deviation, we have that the range is (210-80)/15.04 = 8.64 standard deviations.
+
+For Diastolic Blood Pressure,dividing the range by the sample standard deviation, we have that the range is (110-45)/10.91608 = 5,96 standard deviations.
+
+
+
+## h)Median:
+## Systolic Blood Pressure
+```{r median, echo=FALSE}
+median(systolicformale)
+```
+## Diastolic Blood Pressure
+```{r median2, echo=FALSE}
+median(diastolicformale) 
+```
+
+
+## i)IQR:
+## Systolic Blood Pressure
+```{r IQR, echo=FALSE}
+IQR(systolicformale)
+```
+## Diastolic Blood Pressure
+```{r IQR2, echo=FALSE}
+IQR(diastolicformale) 
+```
+
+
+## j)Five-num Summaries:
+## Systolic Blood Pressure
+```{r summary, echo=FALSE}
+fivenum(systolicformale)
+```
+## Diastolic Blood Pressure
+```{r summary2, echo=FALSE}
+fivenum(diastolicformale) 
+```
+
+
+
+## k)Box Plot for data sets:
+```{r boxplot, echo=FALSE}
+boxplot(systolicformale,ylab='Corresponding Data',main='Systolic Blood Pressure For Men')
+boxplot(diastolicformale,ylab='Corresponding Data',main='Diastolic Blood Pressure For Men')
+```
+
+As it can be seen from the 'Systolic Blood Pressure For Men' graph has 2 outliers and graph is skewed to left.And on the other hand 'Diastolic Blood Pressure For Men' graph has 5 outliers and it is skewed to left.
+
+## l)Constructing and Interpreting Stem-and-leaf Plot
+## Systolic Blood Pressure
+```{r steam&leaf, echo=FALSE}
+stem(systolicformale,scale=2)
+```
+## Diastolic Blood Pressure
+```{r steam&leaf2, echo=FALSE}
+stem(diastolicformale,scale=2) 
+```
+
+
+
+## m)Constructing and Interpreting Histograms
+```{r histogram, echo=FALSE}
+hist(systolicformale,main = "Histogram of Systolic Blood Pressure For Men with 5 breaks",xlab = "Frequency",border = "dodgerblue4",col= "indianred3",xlim = c(min(systolicformale), max(systolicformale)),las=1,breaks=5,prob=TRUE,cex.main= 0.9)
+hist(systolicformale,main = "Histogram of Systolic Blood Pressure For Men with 10 breaks",xlab = "Frequency",border = "dodgerblue4",col= "indianred3" ,xlim = c(min(systolicformale), max(systolicformale)),las=1,breaks=11,prob=TRUE,cex.main= 0.9)
+```
+```{r histogram2, echo=FALSE}
+hist(diastolicformale,main = "Histogram of Diastolic Blood Pressure For Men with 5 breaks",xlab = "Frequency",border = "black",col= "rosybrown3",xlim = c(min(diastolicformale), max(diastolicformale)),las=1,breaks=5,prob=TRUE,cex.main= 0.9)
+hist(diastolicformale,main = "Histogram of Diastolic Blood Pressure For Men with 10 breaks",xlab = "Frequency",border = "black",col= "rosybrown3" ,xlim = c(min(diastolicformale), max(diastolicformale)),las=1,breaks=11,prob=TRUE,cex.main=0.9)
+```
+
+If we compare two graphs for both cases,it is obvious that we can see the distribution better by using more sub-intervals.
+
+## n)Drawing a dot plot:
+ 
+```{r dotplot, echo=FALSE}
+stripchart(systolicformale,method="stack",at=c(0.05),pch=20,cex=1,
+           las=1,frame.plot=F,xlim=c(80,210),main="Dotplot of Systolic Blood Pressure  For Men")
+stripchart(diastolicformale,method="stack",at=c(0.05),pch=20,cex=1,
+           las=1,frame.plot=F,xlim=c(45,110),main="Dotplot of Diastolic Blood Pressure  For Men")
+``` 
+
+As it can be seen from dot plot graphs,both of them has some outliers and shapes of the graphs are not mound shaped.
+
+## o) Tchebysheff’s Theorem
+Tchebysheff’s Theorem can be applied to any set of measurements(large or small,mound-shaped or skewed) and it is always satisfied.So  we can use Tchebysheff’s Theorem for both cases.
+
+## p) The Empirical Rule
+The Empirical RUle can be applied only when the data tend to be roughly mound-shaped.Since the data is not mound-shaped(bell-shaped,symmetric) and we have outliers in both cases we can not use Empirical Rule.
+
+## q) Constructing and Interpreting a Comparative Dotplot to Compare The Groups
+```{r compplot, echo=FALSE}
+stripchart(systolicformale,method="stack",at=c(0.05),pch=20,cex=1,
+           las=1,frame.plot=F,xlim=c(80,210),main="Dotplot of Systolic Blood Pressure  For Men")
+stripchart(diastolicformale,method="stack",at=c(0.05),pch=20,cex=1,
+           las=1,frame.plot=F,xlim=c(45,110),main="Dotplot of Diastolic Blood Pressure  For Men")
+
+``` 
+
+If we compare the groups,Systolic Blood Pressure has 2 outliers and it is skewed to left.And on the other hand,Diastolic Blood Pressure has 5 outliers and it is skewed to left.
+
+
+## r) Relative Frequency Histogram
+## Systolic Blood Pressure
+
+```{r freq}
+library(HistogramTools)
+PlotRelativeFrequency(hist(systolicformale,border = "black",col= "darkorchid4"),
+main = "Histogram of Relative Frequency for Men SYSBP",border = "black",col= "darkorchid4",
+xlab= "SYSBP",cex.main=1)
+``` 
+
+It is skewed to left.
+
+## Diastolic Blood Pressure
+
+```{r freq2, include=TRUE}
+library(HistogramTools)
+PlotRelativeFrequency(hist(diastolicformale,border = "black",col= "lightsalmon2"),
+main = "Histogram of Relative Frequency for Men DIASBP",border = "black",col= "lightsalmon2",
+xlab= "DIASBP",cex.main=1)
+``` 
+
+
+It is skewed to left.
+
+## s) z-scores for the largest and smallest observations
+## Systolic Blood Pressure
+```{r Zscore, echo=FALSE}
+zscores<-c((max(systolicformale) - mean(systolicformale))/sd(systolicformale), 
+                  (min(systolicformale) - mean(systolicformale))/sd(systolicformale))
+zscores
+``` 
+z-scores between -2 and 2 are not unusual.z-scores shouldn't be more than 3 in absolute value.z-scores larger than 3 in absolute value would indicate a possible outlier.So in that case we can indicate smallest observation(-2.489309) as a somewhat unusual and largest observation(6.149510) as a outlier.
+
+## Diastolic Blood Pressure
+```{r Zscore2, echo=FALSE}
+zscore<-c((max(diastolicformale) - mean(diastolicformale))/sd(diastolicformale), 
+                  (min(diastolicformale) - mean(diastolicformale))/sd(diastolicformale))
+zscore
+``` 
+As i mentioned about the reason above we can indicate smallest observation(-2.705185) as a somewhat unusual and largest observation(3.249336) as a outlier.
+
+
+
+
+
+
+##  Values For Females
+
+
+## a)Mean value:
+## Systolic Blood Pressure
+```{r mean3, echo=FALSE}
+mean(systolic_female) 
+```
+## Diastolic Blood Pressure
+```{r mean4, echo=FALSE}
+mean(diastolic_female) 
+```
+  
+
+
+## b)Sample Variance:
+## Systolic Blood Pressure
+```{r variance3, echo=FALSE}
+var(systolic_female)
+```
+## Diastolic Blood Pressure
+```{r variance4, echo=FALSE}
+var(diastolic_female) 
+```
+
+
+## c)Standard Deviation:
+## Systolic Blood Pressure
+```{r standard dev3, echo=FALSE}
+sd(systolic_female)
+```
+## Diastolic Blood Pressure
+```{r standard4, echo=FALSE}
+sd(diastolic_female) 
+```
+
+
+## d)Corresponding Quartiles:
+## Systolic Blood Pressure
+```{r quartiles3, echo=FALSE}
+quantile(systolic_female)
+```
+## Diastolic Blood Pressure
+```{r quartiles4, echo=FALSE}
+quantile(diastolic_female) 
+```
+
+
+## e)Max and Min Values:
+## Systolic Blood Pressure
+```{r max&min3, echo=FALSE}
+max(systolic_female)
+min(systolic_female)
+```
+## Diastolic Blood Pressure
+```{r max&min4, echo=FALSE}
+max(diastolic_female) 
+min(diastolic_female)
+```
+
+
+## f)Range:
+## Systolic Blood Pressure
+```{r range3, echo=FALSE}
+range(systolic_female)
+```
+## Diastolic Blood Pressure
+```{r range4, echo=FALSE}
+range(diastolic_female) 
+```
+
+
+
+## g)
+For Systolic Blood Pressure,dividing the range by the sample standard deviation, we have that the range is (130-78)/11.33812 = 4,58 standard deviations.
+
+For Diastolic Blood Pressure,dividing the range by the sample standard deviation, we have that the range is (90-50)/8.810525 = 4,54 standard deviations.
+
+
+
+## h)Median:
+## Systolic Blood Pressure
+```{r median3, echo=FALSE}
+median(systolic_female)
+```
+## Diastolic Blood Pressure
+```{r median4, echo=FALSE}
+median(diastolic_female) 
+```
+
+
+## i)IQR:
+## Systolic Blood Pressure
+```{r IQR3, echo=FALSE}
+IQR(systolic_female)
+```
+## Diastolic Blood Pressure
+```{r IQR4, echo=FALSE}
+IQR(diastolic_female) 
+```
+
+
+## j)Five-num Summaries:
+## Systolic Blood Pressure
+```{r summary3, echo=FALSE}
+fivenum(systolic_female)
+```
+## Diastolic Blood Pressure
+```{r summary4, echo=FALSE}
+fivenum(diastolic_female) 
+```
+
+
+
+## k)Box Plot for data sets:
+```{r boxplot2, echo=FALSE}
+boxplot(systolic_female,ylab='Corresponding Data',main='Systolic Blood Pressure For Women')
+boxplot(diastolic_female,ylab='Corresponding Data',main='Diastolic Blood Pressure For Women')
+```
+
+As it can be seen from the 'Systolic Blood Pressure For Women' graph has no outliers and graph is skewed to left.And on the other hand 'Diastolic Blood Pressure For Women' graph has no outliers and it is skewed to right.
+
+## l)Constructing and Interpreting Stem-and-leaf Plot
+## Systolic Blood Pressure
+```{r steam&leaf3, echo=FALSE}
+stem(systolic_female,scale=2)
+```
+## Diastolic Blood Pressure
+```{r steam&leaf4, echo=FALSE}
+stem(diastolic_female,scale=2) 
+```
+
+
+
+## m)Constructing and Interpreting Histograms
+```{r histogram3, echo=FALSE}
+hist(systolic_female,main = "Histogram of Systolic Blood Pressure For Women with 5 breaks",xlab = "Frequency",border = "gray33",col= "deeppink3",xlim = c(70, max(systolic_female)),las=1,breaks=5,prob=TRUE,cex.main=0.9)
+hist(systolic_female,main = "Histogram of Systolic Blood Pressure For Women with 10 breaks",xlab = "Frequency",border = "gray33",col= "deeppink3" ,xlim = c(70, max(systolic_female)),las=1,breaks=11,prob=TRUE,cex.main=0.9)
+```
+```{r histogram4, echo=FALSE}
+hist(diastolic_female,main = "Histogram of Diastolic Blood Pressure For Women with 5 breaks",xlab = "Frequency",border = "antiquewhite",col= "cadetblue4",xlim = c(min(diastolic_female), max(diastolic_female)),las=1,breaks=5,prob=TRUE,cex.main=0.9)
+hist(diastolic_female,main = "Histogram of Diastolic Blood Pressure For Women with 10 breaks",xlab = "Frequency",border = "antiquewhite",col= "cadetblue4" ,xlim = c(min(diastolic_female), max(diastolic_female)),las=1,breaks=11,prob=TRUE,cex.main=0.9)
+```
+
+If we compare two graphs for both cases,it is obvious that we can see the distribution better by using more sub-intervals.
+
+## n)Drawing a dot plot:
+ 
+```{r dotplot2, echo=FALSE}
+stripchart(systolic_female,method="stack",at=c(0.05),pch=20,cex=1,
+           las=1,frame.plot=F,xlim=c(70,130),main="Dotplot of Systolic Blood Pressure  For Women")
+stripchart(diastolic_female,method="stack",at=c(0.05),pch=20,cex=1,
+           las=1,frame.plot=F,xlim=c(50,90),main="Dotplot of Diastolic Blood Pressure  For Women")
+``` 
+
+As it can be seen from dot plot graphs,shapes of the graphs are not mound shaped.
+
+## o) Tchebysheff’s Theorem
+Tchebysheff’s Theorem can be applied to any set of measurements(large or small,mound-shaped or skewed) and it is always satisfied.So  we can use Tchebysheff’s Theorem for both cases.
+
+## p) The Empirical Rule
+The Empirical RUle can be applied only when the data tend to be roughly mound-shaped.Since the data is not mound-shaped(bell-shaped,symmetric) and we in both cases graphs are skewed.So we can not use Empirical Rule for both cases.
+
+## q) Constructing and Interpreting a Comparative Dotplot to Compare The Groups
+```{r compplot2, echo=FALSE}
+stripchart(systolic_female,method="stack",at=c(0.05),pch=20,cex=1,
+           las=1,frame.plot=F,xlim=c(78,130),main="Dotplot of Systolic Blood Pressure  For Women")
+stripchart(diastolic_female,method="stack",at=c(0.05),pch=20,cex=1,
+           las=1,frame.plot=F,xlim=c(50,90),main="Dotplot of Diastolic Blood Pressure  For Women")
+``` 
+
+If we compare the groups,Systolic Blood Pressure graph has no outliers and graph is skewed to left.And on the other hand,Diastolic Blood Pressure graph has no outliers and it is skewed to right.
+
+
+## r) Relative Frequency Histogram
+## Systolic Blood Pressure
+
+```{r freq3, echo=FALSE}
+library(HistogramTools)
+PlotRelativeFrequency(hist(systolic_female,border = "black",col= "aquamarine3"),
+main = "Histogram of Relative Frequency for Women SYSBP",border = "black",col= "aquamarine3",
+xlab= "SYSBP",cex.main=1)
+``` 
+
+It is skewed to left.
+
+## Diastolic Blood Pressure
+
+```{r freq4, include=TRUE}
+library(HistogramTools)
+PlotRelativeFrequency(hist(diastolic_female,border = "black",col= "darkgoldenrod2"),
+main = "Histogram of Relative Frequency for Women DIASBP",border = "black",col= "darkgoldenrod2",
+xlab= "DIASBP",cex.main=1)
+
+
+``` 
+
+It is skewed to right.
+
+## s) z-scores for the largest and smallest observations
+## Systolic Blood Pressure
+```{r Zscore3, echo=FALSE}
+zscores<-c((max(systolic_female) - mean(systolic_female))/sd(systolic_female), 
+                  (min(systolic_female) - mean(systolic_female))/sd(systolic_female))
+zscores
+``` 
+z-scores between -2 and 2 are not unusual.z-scores shouldn't be more than 3 in absolute value.z-scores larger than 3 in absolute value would indicate a possible outlier.So in that case we can indicate smallest observation(-2.729729) as a somewhat unusual and largest observation(1.856568) as a usual observation.
+
+## Diastolic Blood Pressure
+```{r Zscore4, echo=FALSE}
+zscore<-c((max(diastolic_female) - mean(diastolic_female))/sd(diastolic_female), 
+                  (min(diastolic_female) - mean(diastolic_female))/sd(diastolic_female))
+zscore
+``` 
+As i mentioned about the reason above we can indicate both smallest observation(-2.386918) and largest observation(2.153107) as a somewhat unusual.
