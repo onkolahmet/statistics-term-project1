@@ -28,7 +28,7 @@ We can use graphical methods to determine the shape of the distributions,unusual
 ## Part-3
 
 ```{r table}
-values<-read.csv("HW1_Data.csv", head = TRUE, sep=";")
+values<-read.csv("HW1_Data.csv", head = TRUE, sep=";");
 male<-subset(values,GENDER == "0")
 female<-subset(values,GENDER == "1")
 systolicformale<-c(male[,c("SYSBP")])
